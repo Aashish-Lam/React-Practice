@@ -7,12 +7,25 @@ function App() {
   let [Counter,setCounter]=useState(0)//propogates to user interface
   // let Counter=15
   const addValue= ()=>{
-    Counter=Counter+1;//mathi ko counter varr 0 ma initialize vayesi addition gareko
+    if(Counter<20){
+      Counter=Counter+1;
+    }
+    else{
+      Counter
+      
+    }
+    //mathi ko counter varr 0 ma initialize vayesi addition gareko
     setCounter(Counter)//update counter haru tyo mathiko method ma pass gareko
   }
   //similary decrease the value
   const removeValue= ()=>{
-    Counter=Counter-1;
+    if(Counter<=0){
+      Counter
+    }
+    else{
+      Counter=Counter-1
+    }
+    
     setCounter(Counter)
   }
   return (
