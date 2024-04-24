@@ -16,6 +16,7 @@ function App() {
     }
     //mathi ko counter varr 0 ma initialize vayesi addition gareko
     setCounter(Counter)//update counter haru tyo mathiko method ma pass gareko
+    //setCounter(prevCounter => prevCounter +1) batch ma pathaucha use state le last ma jcha tei pathuacha
   }
   //similary decrease the value
   const removeValue= ()=>{
