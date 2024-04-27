@@ -1,8 +1,11 @@
 * {
+  
   box-sizing: border-box;
 }
 
 body {
+  display: inline-block;
+
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
@@ -54,21 +57,23 @@ body {
   font-family: sans-serif;
   margin: 20px;
   padding: 0;
+  border-radius: 2em;
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
+  border-radius: 0em;
+  background: #00B4D8;
+  border: 2px solid #CAF0F8;
   float: left;
   font-size: 24px;
   font-weight: bold;
   line-height: 34px;
-  height: 34px;
+  height: 5em;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
-  width: 34px;
+  width: 5em;
 }
 
 .board-row:after {
