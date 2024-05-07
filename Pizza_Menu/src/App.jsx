@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './index.css'
 
 //momo object start
 const momoData = [
@@ -62,10 +62,11 @@ function Momo(){
   )
 }
 const Header=()=>{
+  const style={color:"red",fontSize:"32px", textTransform:"uppercase"}
 return(
-  <h2>
+  <h1 className='header'>
     Mitho Momos React
-  </h2>
+  </h1>
 )
 }
 const Footer=()=>{
@@ -79,7 +80,7 @@ const Footer=()=>{
   // alert("we are currently closed")
   //   }
   return(
-    <footer>
+    <footer className='footer'>
       {
         new Date().toLocaleDateString()
       }This facality is currently open
@@ -89,11 +90,16 @@ const Footer=()=>{
 const Menu=()=>{
   return(
     <>
-    <h2>
-      Our Menu
-    </h2>
-      <Momo/>
-  <Momo/>
+    <main className="menu">
+      <h2>
+        Our Menu
+      </h2>
+        <Momo/>
+        <Momo/>
+        <Momo/>
+        <Momo/>
+      
+    </main>
     </>
   )
 }
@@ -102,9 +108,11 @@ function App() {
   return (
   
   <>
+  <div className='container'>
     <Header/>
     <Menu/>
     <Footer/>
+    </div>
     </>
   )
 }
