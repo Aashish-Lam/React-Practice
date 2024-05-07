@@ -142,11 +142,33 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
-const books= getBooks();
-const books2= getBook(2);
+// const books= getBooks();
+const book= getBook(1);
 
-const tittles=books2.title;
-const author= books2.author;
-author 
-tittles
-const {title,pages , publicationDate, gene}= book;
+// const tittles=books2.title;
+// const author= books2.author;
+// author 
+// tittles
+const {title,author ,pages, genres}= book;
+// book
+// console.log(title,author,genres)
+//array relies on order
+const primaryGenre= genres[0]
+const secondaryGenre= genres[1]
+//or
+const [oneG,twoG, ...restG]=genres
+console.log(oneG,twoG,restG)
+const newGenres=[...genres, 'epicFantasy']
+newGenres;
+//... joins and gives new array
+const updatedBook={
+  book, moviePubate:'2080-1-20'
+}
+updatedBook
+const updatedBookwspread={
+ ...book, moviePubate:'2080-1-20'}
+updatedBookwspread
+const summary=`${title} was wriiten by ${author}. The genres are ${genres}. It has ${pages}-pages`
+summary
+const PagesRange=pages>1000?'over a thousand':'less than a thousand';
+PagesRange
