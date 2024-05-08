@@ -36,7 +36,10 @@ body {
 .header {
   align-self: stretch;
 }
-
+img{
+  border-radius: 20px;
+  margin-bottom:  40px ;
+}
 .header h1 {
   /* Non-accessible color */
   color: #edc84b;

@@ -7,21 +7,21 @@ const momoData = [
     name: "Veg Momo",
     ingredients: "Cabbage, carrot, onion, ginger, garlic",
     price: 5,
-    photoName: "momos/veg_momo.jpg",
+    photoName: "../public/Veg_Momo.png",
     soldOut: false,
   },
   {
     name: "Chicken Momo",
     ingredients: "Chicken, onion, ginger, garlic, spices",
     price: 7,
-    photoName: "momos/chicken_momo.jpg",
+    photoName: "../public/Chicken_Momo.png",
     soldOut: false,
   },
   {
     name: "Pork Momo",
     ingredients: "Pork, onion, ginger, garlic, spices",
     price: 8,
-    photoName: "momos/pork_momo.jpg",
+    photoName: "../public/Pork_Momo.png",
     soldOut: false,
   },
   {
@@ -35,7 +35,7 @@ const momoData = [
     name: "Paneer Momo",
     ingredients: "Paneer cheese, onion, ginger, garlic, spices",
     price: 6,
-    photoName: "momos/paneer_momo.jpg",
+    photoName: "../public/Paneer_Momo.png",
     soldOut: false,
   },
   {
@@ -47,17 +47,21 @@ const momoData = [
   },
 ];
 
-function Momo(){
+function Momo(props){
   return (
     <>
-    <div>
-    This is a Panner momo
-    </div>
-    <img src="../public/Paneer_Momo.png" alt="Panner momo" style={{
+    <li className='pizza'>
+    <img src={props.momoObj.photoName} alt={props.momoObj.name} style={{
       width:102,
       height:102
 
     }} />
+      <div>
+    <h3>{props.momoObj.name}</h3>
+      <p>{props.momoObj.ingredients}</p>
+      <span>{props.momoObj.price-2.5}</span>
+    </div>
+  </li>
     </>
   )
 }
@@ -94,10 +98,12 @@ const Menu=()=>{
       <h2>
         Our Menu
       </h2>
-        <Momo/>
-        <Momo/>
-        <Momo/>
-        <Momo/>
+      <ul className='pizzas'>
+      {momoData.map(momo=>(
+      <Momo momoObj={momo} key={momo.name}></Momo>
+      ))}
+
+      </ul>
       
     </main>
     </>
