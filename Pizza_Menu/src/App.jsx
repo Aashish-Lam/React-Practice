@@ -48,6 +48,7 @@ const momoData = [
 ];
 
 function Momo(props){
+  if(props.momoObj.soldOut) return <> null </>;
   return (
     <>
     <li className='pizza'>
@@ -73,43 +74,65 @@ return(
   </h1>
 )
 }
-const Footer=()=>{
-  const hours=new Date().getHours()
-  const Openhours=10
-  const Closehours=20
-  const isOpen=hours>Openhours && hours<Closehours
-  console.log ("isOpen")
-  // if(hours>Openhours && hours<Closehours ) alert("we are currently open")
-  //   else{
-  // alert("we are currently closed")
-  //   }
-  return(
-    <footer className='footer'>
-      {
-        new Date().toLocaleDateString()
-      }This facality is currently open
-    </footer>
-  )
-}
 const Menu=()=>{
+  const momos= momoData
+  const numMomos= momos.length;
   return(
+    
     <>
     <main className="menu">
       <h2>
         Our Menu
       </h2>
-      <ul className='pizzas'>
+     
+      {numMomos > 0 ? 
+     <ul className='pizzas'>
       {momoData.map(momo=>(
       <Momo momoObj={momo} key={momo.name}></Momo>
       ))}
-
       </ul>
+           :(<>
+           <p>
+            We are still figuring out our menu. Please comeback later:
+           </p>
+           
+           </>) }
       
     </main>
     </>
   )
 }
+const Footer=()=>{
+  const hours=new Date().getHours()
+  const Openhours=10
+  const Closehours=23
+  const isOpen= hours>=Openhours && hours<=Closehours
+   if  (!isOpen){
+    return(
+      <>
+      We are not open 😔😔
+      </>
 
+    )
+   }
+
+
+  return isOpen ? (
+  <Orders Hours={hours} Closehours={Closehours}/>
+  ) :<>
+    <footer className='order'>
+      The facility is currently closed
+    </footer>
+  </>
+}
+function Orders(params){
+  return (
+  <div className='order'>
+  <p>
+  {params.Hours} This facility is currently open until {params.Closehours}
+  </p>
+  </div>)
+}
 function App() {
   return (
   
