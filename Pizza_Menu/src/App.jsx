@@ -28,7 +28,7 @@ const momoData = [
     name: "Buff Momo",
     ingredients: "Buffalo meat, onion, ginger, garlic, spices",
     price: 9,
-    photoName: "momos/buff_momo.jpg",
+    photoName: "../public/Buff_Momo.jpeg",
     soldOut: true,
   },
   {
@@ -47,20 +47,25 @@ const momoData = [
   },
 ];
 
-function Momo(props){
-  if(props.momoObj.soldOut) return <> null </>;
+function Momo({momoObj}){
+  // if(momoObj.soldOut) return <> null </>;
   return (
     <>
-    <li className='pizza'>
-    <img src={props.momoObj.photoName} alt={props.momoObj.name} style={{
+    <li className={`pizza ${momoObj.soldOut ? 'sold-out':''}`}>
+    <img src={momoObj.photoName} alt={momoObj.name} style={{
       width:102,
       height:102
 
     }} />
       <div>
-    <h3>{props.momoObj.name}</h3>
-      <p>{props.momoObj.ingredients}</p>
-      <span>{props.momoObj.price-2.5}</span>
+    <h3>{momoObj.name}</h3>
+      <p>{momoObj.ingredients}</p>
+      {momoObj.soldOut ? (
+        <span>
+          Sold Out
+        </span>
+      ):(<span> {momoObj.price}</span>)
+     }
     </div>
   </li>
     </>
