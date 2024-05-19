@@ -4,7 +4,7 @@ import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(1)
   function step_increase(){
     setStep((s)=>s+1)
   }
@@ -30,20 +30,18 @@ function App() {
   }
   const date= new Date(" march 21 2021")
   date.setDate(date.getDate()+count);
-  
+  function handleReset(){
+    setStep(step > 1 ? 1 : step);
+    setCount(count !== 0 ? 0 : count);
+  }
+
   return (
  <>
+ <input type="range" min="1" max="10" value={step} onChange={e=>setStep(Number(e.target.value))}/>
   <p>
-  Step
+  {step}
  </p>
- <button onClick={step_decrease}>
-  -
- </button>
 
- {step}
- <button onClick={step_increase}>
-  +
- </button>
  <div>
  <p>
   Count
@@ -51,7 +49,7 @@ function App() {
  <button onClick={countdecrease}>
   -
  </button>
-{count}
+    <input type="text" value={count} onChange={e=>setCount(Number(e.target.value))}/>
  <button onClick={countincrease}>
   +
  </button>
@@ -63,6 +61,13 @@ function App() {
   </span>
   {date.toLocaleString()}
  </p>
+ {count!==0 || step!==1?
+  <div >
+<button className='button' onClick={handleReset}>
+  Reset
+</button>
+</div>:<></>
+}
  </>
   )
 }
